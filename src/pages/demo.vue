@@ -2,14 +2,19 @@
 <!-- Swiper -->
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide" :style="'background-color:'+nowcolor" v-for="(item,index) in 5" :key="index">Slide {{index}}</div>
+      <div class="swiper-slide" :style="'background-color:'+nowcolor" v-for="(item,index) in 5" :key="index">
+          Slide {{index}}
+          </div>
     </div>
+<Music/>
   </div>
 </template>
 
 <script>
+import Music from '../components/music'
 export default {
   props: [ 'active' ],
+  components: { Music },
   data () {
     return {
       nowcolor: ''

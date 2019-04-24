@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Demo from '@/components/demo'
+import Demo from '@/pages/demo'
 import Swiper from 'swiper'
 export default {
   name: 'app',
@@ -24,7 +24,7 @@ export default {
         direction: 'vertical',
         autoplay: true,
         // loop: true,
-        // effect: 'cube',
+        effect: 'coverflow',
         height: window.innerHeight,
         width: window.innerWidth,
         on: {
