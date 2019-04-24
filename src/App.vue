@@ -1,19 +1,35 @@
 <template>
   <div id="app">
-   <Demo :active="active"/>
+    <!-- loading -->
+    <transition
+    appear
+    enter-active-class="animated fadeIn"
+    leave-active-class="animated fadeOut"
+    appear-class="animated swing"
+    :duration="3000">
+    <Loading v-if="showload"/>
+      </transition>
+   <Demo :active="active" />
+<Arrow v-if="showarrow"/>
   </div>
 </template>
 
 <script>
+import Loading from '@/components/loading'
+import Arrow from '@/components/arrow'
 import Demo from '@/pages/demo'
 import Swiper from 'swiper'
 export default {
   name: 'app',
   components: {
+    Loading,
+    Arrow,
     Demo
   },
   data () {
     return {
+      showload: true,
+      showarrow: true,
       active: ''
     }
   },
@@ -22,12 +38,15 @@ export default {
       let that = this
       let mySwiper = new Swiper('.swiper-container', {
         direction: 'vertical',
-        autoplay: true,
+        // autoplay: true,
         // loop: true,
         effect: 'coverflow',
         height: window.innerHeight,
         width: window.innerWidth,
         on: {
+          init () {
+            setTimeout(() => { that.showload = false }, 1000)
+          },
           resize () {
             this.params.width = window.innerWidth
             this.params.height = window.innerHeight
@@ -35,13 +54,19 @@ export default {
           },
           slideChange () {
             that.active = this.activeIndex
+            if (this.activeIndex) {
+              that.showarrow = false
+            }else {
+              that.showarrow = true
+            }
           }
         }
       })
     }
   },
   mounted () {
-    this.InitSwiper()
+    let that = this
+    that.InitSwiper()
   }
 }
 </script>
@@ -57,5 +82,8 @@ export default {
 }
 body{
   margin: 0;
+}
+button:focus,i:focus{
+    outline: none;
 }
 </style>

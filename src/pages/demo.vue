@@ -6,8 +6,9 @@
           Slide {{index}}
           </div>
     </div>
+<!-- music -->
 <Music/>
-  </div>
+</div>
 </template>
 
 <script>
@@ -17,7 +18,7 @@ export default {
   components: { Music },
   data () {
     return {
-      nowcolor: ''
+      nowcolor: '#000'
     }
   },
   methods: {

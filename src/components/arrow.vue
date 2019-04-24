@@ -1,0 +1,54 @@
+<template>
+<button class="arrow">
+    <img src="https://loading.io/s/icon/hvz6zf.png" alt="">
+</button>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style>
+.arrow {
+  width: 2rem;
+  height: 2rem;
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  z-index: 999;
+  background: none;
+  border: none;
+  padding: 0;
+  animation: upArrowAni 2s infinite linear;
+}
+.arrow img {
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  line-height: 2rem;
+  color: #fff;
+  font-size: 1.5rem;
+}
+@keyframes upArrowAni {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, 30%, 0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate3d(-50%, -20%, 0);
+  }
+
+  60% {
+    opacity: 0;
+    transform: translate3d(-50%, -35%, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0);
+  }
+}
+</style>

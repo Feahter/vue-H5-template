@@ -1,10 +1,11 @@
 <template>
 <div class="music">
     <button class="btn-music" :class="play?'':'paused'" @click="Toggle">
-        <i class="icon-note">M</i>
+        <!-- <i class="icon-note">M</i> -->
+        <img src="https://loading.io/s/icon/5vbxrb.png" alt="">
     </button>
-    <audio loop>
-    <source src="https://panteng.github.io/wechat-h5-boilerplate/audios/background.mp3" type="audio/mpeg">
+    <audio loop autoplay>
+    <source src="http://www.ytmp3.cn/down/60331.mp3" type="audio/mpeg">
 </audio>
 </div>
 </template>
@@ -17,8 +18,7 @@ export default {
     }
   },
   mounted () {
-    let music = document.querySelector('audio')
-    music.play()
+    // document.querySelector('audio').play()
   },
   methods: {
     Toggle () {
@@ -36,9 +36,6 @@ export default {
 </script>
 
 <style>
-button:focus,i:focus{
-    outline: none;
-}
 .btn-music {
   width: 2rem;
   height: 2rem;
@@ -52,7 +49,7 @@ button:focus,i:focus{
   padding: 0;
   animation: btnMusicAni 3s infinite linear;
 }
-.btn-music i {
+.btn-music img {
   width: 2rem;
   height: 2rem;
   text-align: center;
