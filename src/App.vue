@@ -83,8 +83,11 @@ export default {
       that.clearAnimation()
       let items = swiper.slides[swiper.activeIndex].querySelectorAll('.swiper-container .animated')
       that.each(items, (i, e) => {
+        let old = e.classList.item(2)
         let name = e.getAttribute('data-name')
-        e.classList.add(name)
+        if (old) { e.classList.replace(old, name) } else {
+          e.classList.add(name)
+        }
         e.style.visibility = 'visible'
       })
     },
@@ -92,8 +95,8 @@ export default {
       let that = this
       let items = document.querySelectorAll('.swiper-container .animated')
       that.each(items, (i, e) => {
-        let name = e.getAttribute('data-name')
-        e.classList.remove(name)
+        let old = e.classList.item(2)
+        e.classList.remove(old)
         e.style.visibility = 'hidden'
       })
     },
@@ -109,16 +112,16 @@ export default {
         on: {
           init () {
             setTimeout(() => {
-              that.showload = false
               that.initAnimationItems()
+              that.showload = false
               that.playAnimation(this)
-            }, 500)
+            }, 1000)
           },
-          // resize () {
-          //   this.params.width = window.innerWidth
-          //   this.params.height = window.innerHeight
-          //   this.update()
-          // },
+          resize () {
+            this.params.width = window.innerWidth
+            this.params.height = window.innerHeight
+            this.update()
+          },
           transitionEnd () {
             that.playAnimation(this)
           },

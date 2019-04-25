@@ -10,16 +10,19 @@
       >
         <p
           class="item-text animated"
-          data-name="slideInLeft"
+          :data-name="nowclass"
           data-duration="1s"
           data-delay="0.5s"
-        >Slide {{index}}</p>
+        >Slide {{index+1}}</p>
+        <div class="item-img animated" :data-name="nowclass" data-duration="1s" data-delay='0s' >
+          <img src="../assets/loading.svg" alt="">
+        </div>
         <p
           class="item-text animated"
-          data-name="slideInLeft"
+          :data-name="nowclass"
           data-duration="1s"
-          data-delay="0.5s"
-        >I'm a coder!</p>
+          data-delay="1s"
+        >{{nowclass}} Now!</p>
       </div>
       <!-- <div class="swiper-slide" :style="'background-color:'+nowcolor">
         <p class="item-text animated"  data-name="slideInLeft" data-duration="1s" data-delay="0.5s">Slide 1</p>
@@ -51,6 +54,7 @@ export default {
   data () {
     return {
       nowcolor: '#000',
+      nowclass: 'rubberBand',
       arrClass: [
         'bounce',
         'flash',
@@ -67,11 +71,6 @@ export default {
         'bounceInLeft',
         'bounceInRight',
         'bounceInUp',
-        'bounceOut',
-        'bounceOutDown',
-        'bounceOutLeft',
-        'bounceOutRight',
-        'bounceOutUp',
         'fadeIn',
         'fadeInDown',
         'fadeInDownBig',
@@ -81,6 +80,51 @@ export default {
         'fadeInRightBig',
         'fadeInUp',
         'fadeInUpBig',
+        'flip',
+        'flipInX',
+        'flipInY',
+        'lightSpeedIn',
+        'rotateIn',
+        'rotateInDownLeft',
+        'rotateInDownRight',
+        'rotateInUpLeft',
+        'rotateInUpRight',
+        'jackInTheBox',
+        'rollIn',
+        'zoomIn',
+        'zoomInDown',
+        'zoomInLeft',
+        'zoomInRight',
+        'zoomInUp',
+        'slideInDown',
+        'slideInLeft',
+        'slideInRight',
+        'slideInUp',
+        'heartBeat'
+      ],
+      outlist: [
+        'bounceOut',
+        'bounceOutDown',
+        'bounceOutLeft',
+        'bounceOutRight',
+        'bounceOutUp',
+        'lightSpeedOut',
+        'flipOutX',
+        'flipOutY',
+        'slideOutDown',
+        'slideOutLeft',
+        'slideOutRight',
+        'slideOutUp',
+        'zoomOut',
+        'zoomOutDown',
+        'zoomOutLeft',
+        'zoomOutRight',
+        'zoomOutUp', 'rollOut',
+        'rotateOut',
+        'rotateOutDownLeft',
+        'rotateOutDownRight',
+        'rotateOutUpLeft',
+        'rotateOutUpRight',
         'fadeOut',
         'fadeOutDown',
         'fadeOutDownBig',
@@ -90,45 +134,7 @@ export default {
         'fadeOutRightBig',
         'fadeOutUp',
         'fadeOutUpBig',
-        'flipInX',
-        'flipInY',
-        'flipOutX',
-        'flipOutY',
-        'lightSpeedIn',
-        'lightSpeedOut',
-        'rotateIn',
-        'rotateInDownLeft',
-        'rotateInDownRight',
-        'rotateInUpLeft',
-        'rotateInUpRight',
-        'rotateOut',
-        'rotateOutDownLeft',
-        'rotateOutDownRight',
-        'rotateOutUpLeft',
-        'rotateOutUpRight',
-        'hinge',
-        'jackInTheBox',
-        'rollIn',
-        'rollOut',
-        'zoomIn',
-        'zoomInDown',
-        'zoomInLeft',
-        'zoomInRight',
-        'zoomInUp',
-        'zoomOut',
-        'zoomOutDown',
-        'zoomOutLeft',
-        'zoomOutRight',
-        'zoomOutUp',
-        'slideInDown',
-        'slideInLeft',
-        'slideInRight',
-        'slideInUp',
-        'slideOutDown',
-        'slideOutLeft',
-        'slideOutRight',
-        'slideOutUp',
-        'heartBeat'
+        'hinge'
       ]
     }
   },
@@ -137,7 +143,10 @@ export default {
       return '#' + Math.floor(Math.random() * 0xffffff).toString(16)
     },
     getAnimate () {
-      console.log(111)
+      let that = this
+      let list = that.arrClass
+      let index = Math.floor(Math.random() * list.length)
+      return list[index]
     }
   },
   watch: {
@@ -145,6 +154,7 @@ export default {
       let that = this
       if (cur !== old) {
         that.nowcolor = that.getColor()
+        that.nowclass = that.getAnimate()
       }
     }
   }
@@ -162,5 +172,6 @@ export default {
   align-items: center;
   color: #fff;
   font-size: 30px;
+  flex-flow:column wrap;
 }
 </style>
