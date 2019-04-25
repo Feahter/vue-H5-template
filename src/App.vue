@@ -39,20 +39,12 @@ export default {
         switch (object.constructor) {
           case Object:
             return 'Object'
-            // eslint-disable-next-line no-unreachable
-            break
           case Array:
             return 'Array'
-            // eslint-disable-next-line no-unreachable
-            break
           case NodeList:
             return 'NodeList'
-            // eslint-disable-next-line no-unreachable
-            break
           default:
             return 'null'
-            // eslint-disable-next-line no-unreachable
-            break
         }
       })()
       if (type === 'Array' || type === 'NodeList') {
@@ -106,7 +98,6 @@ export default {
     },
     InitSwiper () {
       let that = this
-      // eslint-disable-next-line no-unused-vars
       let mySwiper = new Swiper('.swiper-container', {
         direction: 'vertical',
         // autoplay: true,
@@ -140,6 +131,7 @@ export default {
           }
         }
       })
+      console.log(mySwiper)
     }
   },
   mounted () {
