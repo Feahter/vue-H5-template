@@ -69,9 +69,9 @@ export default {
         let delay = e.getAttribute('data-delay')
         e.classList.add(name)
         e.style.visibility = 'hidden'
-        e.style.transitionDuration = duration
-        e.style.transitionDelay = delay
-        // console.log(val.style, name, duration, delay)
+        e.style.animationDuration = duration
+        e.style.animationDelay = delay
+        // console.log(e.style)
       })
     },
     playAnimation (swiper) {
@@ -79,12 +79,12 @@ export default {
       that.clearAnimation()
       let items = swiper.slides[swiper.activeIndex].querySelectorAll('.swiper-container .animated')
       that.each(items, (i, e) => {
+        e.style.visibility = 'visible'
         let old = e.classList.item(2)
         let name = e.getAttribute('data-name')
         if (old) { e.classList.replace(old, name) } else {
           e.classList.add(name)
         }
-        e.style.visibility = 'visible'
       })
     },
     clearAnimation () {
@@ -92,8 +92,8 @@ export default {
       let items = document.querySelectorAll('.swiper-container .animated')
       that.each(items, (i, e) => {
         let old = e.classList.item(2)
-        e.classList.remove(old)
         e.style.visibility = 'hidden'
+        e.classList.remove(old)
       })
     },
     InitSwiper () {
